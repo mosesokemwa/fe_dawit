@@ -1,65 +1,38 @@
 .container {
   background: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
-  box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
+  justify-content: center;
   display: flex;
   overflow: hidden;
+  box-sizing: border-box;
   z-index: 1;
-  height: var(--md-fullscreen-height);
-  justify-content: center;
-  align-items: center;
-  // height: 100vh;
-  width: 100vw;
 
-  .spacer-form mat-slide-toggle {
+  mat-slide-toggle {
     margin: 8px;
     padding-bottom: 8px;
     display: block;
   }
 
-
   .contact-card {
     min-width: 120px;
-    margin: 20px auto;
-    // background-color: #f2f2f2;
+    // margin: 20px auto;
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 
-
-
-    .mdc-card {
-      padding: 20px;
-      input {
-        background-color: var(--md-sys-color-primary);
-      }
+    input {
+      background-color: var(--md-sys-color-primary);
 
     }
 
-    .full-width {
+    mat-form-field {
       width: 100%;
     }
-
 
     .mat-radio-button {
       display: block;
       margin: 5px 0;
     }
-
-    .row {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .col {
-      flex: 1;
-      margin-right: 20px;
-    }
-
-    .col:last-child {
-      margin-right: 0;
-    }
-
 
   }
 }

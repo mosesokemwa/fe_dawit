@@ -8,8 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatTooltipModule } from '@angular/material/tooltip'
-import {CdkScrollable} from '@angular/cdk/scrolling';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-contact-form',
@@ -25,8 +24,7 @@ import {CdkScrollable} from '@angular/cdk/scrolling';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatProgressBarModule,
-    MatTooltipModule,
-    CdkScrollable,
+    MatTooltipModule
   ]
 })
 export class ContactFormComponent {
@@ -36,8 +34,6 @@ export class ContactFormComponent {
   privacyPolicyChecked = false;
   progressBarValue = 0;
   privacyTooltipValue = 'Your data is safe with us';
-
-
 
   private fb = inject(FormBuilder);
   contactForm = this.fb.group({
