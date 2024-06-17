@@ -1,6 +1,6 @@
 <div class="container">
-  <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
-    <mat-card class="contact-card">
+  <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()" (ngReset)="onReset()">
+    <mat-card class="contact-card" CdkScrollable>
       <mat-card-header>
         <mat-card-title>{{title}}</mat-card-title>
       </mat-card-header>
@@ -9,7 +9,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput placeholder="First name" formControlName="firstName">
+              <mat-label>First name</mat-label>
+              <input matInput formControlName="firstName">
               @if (contactForm.controls['firstName'].hasError('required')) {
               <mat-error>First name is <strong>required</strong></mat-error>
               }
@@ -17,7 +18,8 @@
           </div>
           <div class="col">
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput placeholder="Last name" formControlName="lastName">
+              <mat-label>Last name</mat-label>
+              <input matInput formControlName="lastName">
               @if (contactForm.controls['lastName'].hasError('required')) {
               <mat-error>Last name is <strong>required</strong></mat-error>
               }
@@ -27,7 +29,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput placeholder="Email" formControlName="email">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email">
               @if (contactForm.controls['email'].hasError('required')) {
               <mat-error>Email is <strong>required</strong></mat-error>
               }
@@ -40,7 +43,8 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width" appearance="outline">
-              <textarea matInput placeholder="Message" formControlName="message"></textarea>
+              <mat-label>Message</mat-label>
+              <textarea matInput formControlName="message"></textarea>
               @if (contactForm.controls['message'].hasError('required')) {
               <mat-error>Message is <strong>required</strong></mat-error>
               }
@@ -57,21 +61,66 @@
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput placeholder="Phone number" formControlName="phoneNumber">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber">
             </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col">
             <mat-form-field class="full-width" appearance="outline">
-              <input matInput placeholder="Phone number" formControlName="phoneNumber">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber">
             </mat-form-field>
           </div>
         </div>
+
+        <div class="row spacer-form">
+          <div class="col">
+              <mat-slide-toggle
+              matInput
+              name="subscribe"
+              class="subscribe"
+              [color]="color"
+              [checked]="subscribeChecked"
+              (change)="subscribeChecked = !subscribeChecked"
+              formControlName="subscribe"
+                aria-label="Slide toggle with custom colors"
+                matInput="subscribe"
+                >
+                Subscribe to newsletter!
+              </mat-slide-toggle>
+              @if (contactForm.controls['subscribe'].hasError('required')) {
+              <mat-error>Subscribe is <strong>required</strong></mat-error>
+              }
+          </div>
+        </div>
+
+        <div class="row spacer-form">
+          <div class="col">
+              <mat-slide-toggle
+              matInput
+              formControlName="privacyPolicy"
+              aria-label="Slide toggle"
+              matInput="privacyPolicy"
+              (change)="privacyPolicyChecked = !privacyPolicyChecked"
+              [checked]="privacyPolicyChecked"
+              >
+                Have you read and accepted our privacy policy?
+              </mat-slide-toggle>
+
+          </div>
+
+        </div>
       </mat-card-content>
+
       <mat-card-actions>
         <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="primary" type="reset">Reset</button>
       </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="determinate" value={{progressBarValue}}></mat-progress-bar>
+      </mat-card-footer>
     </mat-card>
   </form>
 </div>

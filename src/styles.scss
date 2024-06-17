@@ -2,35 +2,26 @@
 
 @include mat.core();
 
-// html {
-//   // Apply the light theme by default
-//   @include mat.core-theme(m3-theme.$light-theme);
-//   @include mat.button-theme(m3-theme.$light-theme);
-// }
-
 
 :root {
-  /* Generated from Material Theme Builder Figma plugin
-     or `material-color-utilities`. */
   --md-sys-color-primary: #f2f2f2;
   --md-sys-color-on-primary: #000000;
   --md-sys-color-primary-container: #f2f2f2;
   --md-sys-color-on-primary-container: #002020;
-  /* ... */
+  --mat-toolbar-height: 6.4vh;
+  // fullscreen height minus toolbar height
+  --md-fullscreen-height: calc(100vh - var(--mat-toolbar-height));
+
 }
 
 html {
-  height: 100%;
+  height: 94vh;
 
-body {
-  margin: 0;
-  height: 100%;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: white;
-  color: black;
+  body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: white;
+    color: black;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
 }
-}
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

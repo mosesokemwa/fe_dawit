@@ -1,8 +1,22 @@
 .container {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
   display: flex;
+  overflow: hidden;
+  z-index: 1;
+  height: var(--md-fullscreen-height);
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  // height: 100vh;
+  width: 100vw;
+
+  .spacer-form mat-slide-toggle {
+    margin: 8px;
+    padding-bottom: 8px;
+    display: block;
+  }
 
 
   .contact-card {

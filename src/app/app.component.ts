@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,11 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
   imports: [
     RouterOutlet,
     ContactFormComponent,
+    MatToolbarModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'Contact Form';
+}
