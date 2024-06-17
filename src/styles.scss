@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// html {
+//   // Apply the light theme by default
+//   @include mat.core-theme(m3-theme.$light-theme);
+//   @include mat.button-theme(m3-theme.$light-theme);
+// }
+
+
+:root {
+  /* Generated from Material Theme Builder Figma plugin
+     or `material-color-utilities`. */
+  --md-sys-color-primary: #f2f2f2;
+  --md-sys-color-on-primary: #000000;
+  --md-sys-color-primary-container: #f2f2f2;
+  --md-sys-color-on-primary-container: #002020;
+  /* ... */
+}
+
+html {
+  height: 100%;
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: white;
+  color: black;
+}
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,77 @@
+<div class="container">
+  <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="contact-card">
+      <mat-card-header>
+        <mat-card-title>{{title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="First name" formControlName="firstName">
+              @if (contactForm.controls['firstName'].hasError('required')) {
+              <mat-error>First name is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="Last name" formControlName="lastName">
+              @if (contactForm.controls['lastName'].hasError('required')) {
+              <mat-error>Last name is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="Email" formControlName="email">
+              @if (contactForm.controls['email'].hasError('required')) {
+              <mat-error>Email is <strong>required</strong></mat-error>
+              }
+              @if (contactForm.controls['email'].hasError('email')) {
+              <mat-error>Please enter a valid email address</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <textarea matInput placeholder="Message" formControlName="message"></textarea>
+              @if (contactForm.controls['message'].hasError('required')) {
+              <mat-error>Message is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="Company" formControlName="company">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="Phone number" formControlName="phoneNumber">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <input matInput placeholder="Phone number" formControlName="phoneNumber">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
