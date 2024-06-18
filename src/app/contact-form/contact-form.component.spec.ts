@@ -1,7 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ContactFormComponent } from './contact-form.component';
+import { ContactFormComponent } from '@/app/contact-form/contact-form.component';
 
 describe('ContactFormComponent', () => {
   let component: ContactFormComponent;

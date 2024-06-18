@@ -10,8 +10,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ApiService } from '../api.service'
-import { ContactForm } from '../contactForm';
+import { ApiService } from '@/app/api.service'
+import { ContactForm } from '@/app/contactForm';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

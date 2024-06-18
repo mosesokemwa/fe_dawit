@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ContactForm } from './contactForm';
+import { ContactForm } from '@/app/contactForm';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 

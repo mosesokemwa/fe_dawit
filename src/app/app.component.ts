@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ContactFormComponent } from '@/app/contact-form/contact-form.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
