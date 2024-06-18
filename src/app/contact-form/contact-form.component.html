@@ -1,5 +1,6 @@
 <div class="container">
-  <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()" (ngReset)="onReset()">
+  <!-- form response message -->
+  <form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()" (ngReset)="onReset()" autocomplete="on">
     <mat-card class="contact-card">
       <mat-card-header>
         <mat-card-title>{{title}}</mat-card-title>
@@ -58,43 +59,40 @@
             <input matInput formControlName="phoneNumber">
           </mat-form-field>
         </div>
-        <div class="col">
-          <mat-form-field appearance="outline">
-            <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phoneNumber">
-          </mat-form-field>
-        </div>
 
         <div class="spacer-form">
           <div class="col">
-            <mat-slide-toggle matInput name="subscribe" class="subscribe" [color]="color" [checked]="subscribeChecked"
-              (change)="subscribeChecked = !subscribeChecked" formControlName="subscribe"
-              aria-label="Slide toggle with custom colors" matInput="subscribe">
-              Subscribe to newsletter!
-            </mat-slide-toggle>
-            @if (contactForm.controls['subscribe'].hasError('required')) {
-            <mat-error>Subscribe is <strong>required</strong></mat-error>
-            }
+            <mat-checkbox matInput formControlName="subscribe" aria-label="Select to subscribe" matInput="subscribe">
+              Subscribe to our newsletter!
+
+              @if (contactForm.controls['subscribe'].hasError('required')) {
+              <mat-error>Subscribe is <strong>required</strong></mat-error>
+              }
+            </mat-checkbox>
+
           </div>
-        </div>
-        <div class="spacer-form">
+
           <div class="col">
-            <mat-slide-toggle matInput formControlName="privacyPolicy" aria-label="Slide toggle"
-              matInput="privacyPolicy" (change)="privacyPolicyChecked = !privacyPolicyChecked"
-              [checked]="privacyPolicyChecked">
+            <mat-checkbox matInput formControlName="privacyPolicy" aria-label="Mark as read" matInput="privacyPolicy"
+              (change)="privacyPolicyChecked = !privacyPolicyChecked" [checked]="privacyPolicyChecked">
               Have you read and accepted our privacy policy?
-            </mat-slide-toggle>
+
+              @if (contactForm.controls['privacyPolicy'].hasError('required')) {
+              <mat-error>Privacy policy is <strong>required</strong></mat-error>
+              }
+            </mat-checkbox>
+
           </div>
         </div>
       </mat-card-content>
 
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Submit</button>
-        <button mat-raised-button color="primary" type="reset">Reset</button>
+        <button mat-raised-button color="primary" disabled={{submitting}} type="submit">Submit</button>
+        <button mat-raised-button color="primary" disabled={{submitting}} type="reset">Reset</button>
       </mat-card-actions>
 
       <mat-card-footer>
-        <mat-progress-bar mode="determinate" value={{progressBarValue}}></mat-progress-bar>
+        <mat-progress-bar mode="determinate" value='0'></mat-progress-bar>
       </mat-card-footer>
     </mat-card>
   </form>

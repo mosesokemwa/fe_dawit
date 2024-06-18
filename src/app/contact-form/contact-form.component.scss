@@ -19,6 +19,8 @@
     // margin: 20px auto;
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
+    justify-content: center;
+    display: flex;
 
     input {
       background-color: var(--md-sys-color-primary);
@@ -34,5 +36,21 @@
       margin: 5px 0;
     }
 
+    button {
+      border-radius: 4px;
+      border: 1px solid #eee;
+      margin: 0 8px 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+    }
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+    }
   }
 }
