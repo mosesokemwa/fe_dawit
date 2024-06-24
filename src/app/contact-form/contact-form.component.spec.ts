@@ -22,4 +22,11 @@ describe('ContactFormComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should update the value of the input field for first_name', () => {
+    const input = fixture.nativeElement.querySelector('input');
+    input.value = 'John';
+    input.dispatchEvent(new Event('input'));
+    expect(component.contactForm.get('first_name').value).toBe('John');
+  });
 });

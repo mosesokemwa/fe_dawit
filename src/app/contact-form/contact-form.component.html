@@ -10,8 +10,8 @@
           <div class="col">
             <mat-form-field appearance="outline">
               <mat-label>First name</mat-label>
-              <input matInput formControlName="firstName">
-              @if (contactForm.controls['firstName'].hasError('required')) {
+              <input matInput formControlName="first_name">
+              @if (contactForm.controls['first_name'].hasError('required')) {
               <mat-error>First name is <strong>required</strong></mat-error>
               }
             </mat-form-field>
@@ -19,8 +19,8 @@
           <div class="col">
             <mat-form-field appearance="outline">
               <mat-label>Last name</mat-label>
-              <input matInput formControlName="lastName">
-              @if (contactForm.controls['lastName'].hasError('required')) {
+              <input matInput formControlName="last_name">
+              @if (contactForm.controls['last_name'].hasError('required')) {
               <mat-error>Last name is <strong>required</strong></mat-error>
               }
             </mat-form-field>
@@ -50,13 +50,13 @@
         </div>
         <div class="col">
           <mat-form-field appearance="outline">
-            <input matInput placeholder="Company" formControlName="company">
+            <input matInput placeholder="Company" formControlName="company" autocomplete="organization">
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field appearance="outline">
             <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phoneNumber">
+            <input matInput formControlName="phone_number" autocomplete="mobile">
           </mat-form-field>
         </div>
 
@@ -73,11 +73,11 @@
           </div>
 
           <div class="col">
-            <mat-checkbox matInput formControlName="privacyPolicy" aria-label="Mark as read" matInput="privacyPolicy"
+            <mat-checkbox matInput formControlName="privacy_policy" aria-label="Mark as read" matInput="privacy_policy"
               (change)="privacyPolicyChecked = !privacyPolicyChecked" [checked]="privacyPolicyChecked">
               Have you read and accepted our privacy policy?
 
-              @if (contactForm.controls['privacyPolicy'].hasError('required')) {
+              @if (contactForm.controls['privacy_policy'].hasError('required')) {
               <mat-error>Privacy policy is <strong>required</strong></mat-error>
               }
             </mat-checkbox>

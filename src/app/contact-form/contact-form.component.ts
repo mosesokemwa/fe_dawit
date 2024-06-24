@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ApiService } from '@/app/api.service'
 import { ContactForm } from '@/app/contactForm';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Logger } from '@/app/logger';
 
 @Component({
   selector: 'app-contact-form',
@@ -44,52 +45,52 @@ export class ContactFormComponent {
   private fb = inject(FormBuilder);
   private apiService = inject(ApiService);
   private _snackBar: MatSnackBar = inject(MatSnackBar);
+  private logger: Logger = new Logger();
 
   contactForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    first_name: ['', Validators.required],
+    last_name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     company: '',
     message: ['', Validators.required],
-    phoneNumber: '',
+    phone_number: '',
     subscribe: [this.subscribeChecked, Validators.required],
-    privacyPolicy: [this.privacyPolicyChecked, Validators.required],
+    privacy_policy: [this.privacyPolicyChecked, Validators.required],
   });
-
 
   onSubmit(): void {
     const { value: formValue } = this.contactForm;
-    if (!formValue.privacyPolicy) {
+    if (!formValue.privacy_policy) {
       this.contactForm.get('privacyPolicy')?.setErrors({ required: true });
       return;
     }
     if (this.contactForm.invalid) {
       return;
     }
-    console.log('Form submitted:', formValue);
 
     this.submitting = true;
     this.formServerResponse = 'Sending message...';
     this.openSnackBar();
     this.apiService.postContactForm(formValue as Partial<ContactForm>).subscribe({
       next: (response) => {
-        console.log('Form response:', response);
-        this.formServerResponse = 'Thanks for your message!';
-        this.openSnackBar();
-      },
-      error: (error) => {
-        console.error('Form error:', error);
-        this.formServerResponse = 'An error occurred. Please try again later.';
-        this.openSnackBar();
 
+        this.logger.log('Contact form response:', response);
+
+        this.submitting = true;
+        this.formServerResponse = response.message;
+        this.openSnackBar();
       },
+
+      error: (err: any) => {
+        this.logger.error('Contact form error:', err);
+        this.formServerResponse = err;
+        this.openSnackBar();
+      },
+
       complete: () => {
-        console.log('Form submission completed');
-        this.openSnackBar();
-
-        setTimeout(() => {
-          this.onReset();
-        }, 2000);
+        this.logger.log('Contact form completed');
+        this.submitting = false;
+        this.onReset();
       }
     });
   }
@@ -106,6 +107,9 @@ export class ContactFormComponent {
 
   onReset(): void {
     this.contactForm.reset();
+    this.contactForm.clearValidators();
+    this.subscribeChecked = true;
+    this.privacyPolicyChecked = false;
   }
 
   onSubscribeChange(): void {
