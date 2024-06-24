@@ -22,16 +22,6 @@ export class ApiService {
     'x-api-key': environment.apiKey
   });
 
-  tokens() {
-    this.http.get(
-      this.apiUrl + 'api/tokens/create?token_name=token',
-      { headers: this.headers }
-    ).subscribe((res: any) => {
-      localStorage.setItem('token', res.token.toString());
-      this.headers.set('Authorization', 'Bearer ' + res.token.toString());
-    });
-  }
-
   getContactForm(): Observable<any> {
     return this.http.get(
       this.apiUrl + 'api/form',
