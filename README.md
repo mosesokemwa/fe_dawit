@@ -22,7 +22,7 @@ The form has the following validation rules:
 
 
 ## Setup Instructions
-1. Clone the repository
+1. Clone the repository `git clone https://github.com/mosesokemwa/fe_dawit.git`
 2. Run `npm install` to install the dependencies
 3. Run `ng serve` to start the application on `http://localhost:4200/`
 
